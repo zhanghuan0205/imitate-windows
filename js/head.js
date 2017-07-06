@@ -37,42 +37,44 @@ $.getJSON("../data/data.json",function (str) {
         })
 })
 //桌面鼠标右键位置判断处理
-$("body").mousedown(function(event){
+$(document).mousedown(function(event){
     var curleft = event.offsetX;
     var curTop = event.offsetY;
+    console.log(curTop);
     if(3 == event.which){
-        if(curTop < $("body").height()/2){
-            if(curleft >= $("body").width() - 175){
-                $("#upInfo").css({
-                    "display":"block",
-                    "left":curleft - 175,
-                    "top":curTop
-                });
-            }else {
-                $("#upInfo").css({
-                    "display":"block",
-                    "left":curleft,
-                    "top":curTop
-                });
+        if(curTop > 50){
+            if(curTop < $("body").height()/2){
+                if(curleft >= $("body").width() - 175){
+                    $("#upInfo").css({
+                        "display":"block",
+                        "left":curleft - 175,
+                        "top":curTop
+                    });
+                }else {
+                    $("#upInfo").css({
+                        "display":"block",
+                        "left":curleft,
+                        "top":curTop
+                    });
+                }
+            }else if(curTop >= $("body").height()/2){
+                if(curleft >= $("body").width() - 175){
+                    $("#upInfo").css({
+                        "display":"block",
+                        "left":curleft - 175,
+                        "top":curTop
+                    });
+                }else {
+                    $("#upInfo").css({
+                        "display":"block",
+                        "left":curleft,
+                        "top":curTop - 265
+                    });
+                }
             }
-        }else if(curTop >= $("body").height()/2){
-            if(curleft >= $("body").width() - 175){
-                $("#upInfo").css({
-                    "display":"block",
-                    "left":curleft - 175,
-                    "top":curTop
-                });
-            }else {
-                $("#upInfo").css({
-                    "display":"block",
-                    "left":curleft,
-                    "top":curTop - 265
-                });
-            }
-        }else if(curTop < 50){
-            $("#upInfo").css({
-                "display":"none"
-            });
+        }
+        else {
+            event.stopPropagation();
         }
         //鼠标左键点击关闭事件
     }else if(1 == event.which){

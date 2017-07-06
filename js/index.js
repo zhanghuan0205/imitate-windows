@@ -9,9 +9,9 @@ $(function () {
             "left":$(window).width()/2 - 135,
             "top":$(window).height()/2 + 40
     });
-    $("#logImg").animate({
+    $("#logImg").css({
         top:$(window).height()/2-75,
-        transition:'all 3s linear 0.2s'
+        transition:'all 1s linear 0.2s'
     });
     $("#logImg img").addClass("addRotate");
     $("#bigBox p").css({
